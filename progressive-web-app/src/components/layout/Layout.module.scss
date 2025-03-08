@@ -1,0 +1,15 @@
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  .topLayoutContainer {
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  .bottomLayoutContainer {
+    display: flex;
+    .outletContainer {
+      background-color: rgb(232 226 226);
+      padding: 20px;
+      width: 100%;
+    }
+  }
+}
