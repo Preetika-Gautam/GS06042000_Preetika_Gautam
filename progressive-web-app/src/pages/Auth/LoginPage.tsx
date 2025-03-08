@@ -12,7 +12,7 @@ const LoginPage: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (username === "admin" && password === "admin123") {
+    if (username === "admin" && password === "admin@123") {
       dispatch(login());
       navigate("/stores");
     } else {

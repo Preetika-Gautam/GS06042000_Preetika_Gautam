@@ -85,25 +85,25 @@ const SKUsPage: React.FC = () => {
         onClose={handleCloseModal}
         onSubmit={handleAddSKU}
       >
-        <div className={styles.modalContent}>
-          <label>SKU Label:</label>
+        <div className={styles.inputFieldContainer}>
           <input
             type="text"
             value={label}
+            placeholder="Store Name"
             onChange={(e) => setLabel(e.target.value)}
           />
 
-          <label>Price:</label>
           <input
             type="number"
             value={price}
+            placeholder="Price"
             onChange={(e) => setPrice(e.target.value)}
           />
 
-          <label>Cost:</label>
           <input
             type="number"
             value={cost}
+            placeholder="Cost"
             onChange={(e) => setCost(e.target.value)}
           />
 
