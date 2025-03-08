@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import Layout from "../components/layout/Layout";
 import LoginPage from "../pages/Auth/LoginPage";
-import StorePage from "../pages/Store/StorePage";
+import StoresPage from "../pages/Stores/StoresPage";
 import SKUPage from "../pages/SKU/SKU";
 
 const AppRoutes: React.FC = () => {
@@ -23,7 +23,7 @@ const AppRoutes: React.FC = () => {
         <>
           <Route path="/" element={<Navigate to="/stores" replace />} />
           <Route path="/stores" element={<Layout />}>
-            <Route index element={<StorePage />} />
+            <Route index element={<StoresPage />} />
           </Route>
           <Route path="/sku" element={<Layout />}>
             <Route index element={<SKUPage />} />

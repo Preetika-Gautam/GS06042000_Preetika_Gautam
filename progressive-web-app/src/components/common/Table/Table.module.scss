@@ -1,0 +1,42 @@
+.tableContainer {
+  overflow-x: auto;
+  height: 65vh;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+thead {
+  position: sticky;
+  top: 0;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f4f4f4;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+td svg {
+  color: #4caf50;
+}
+
+td button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
