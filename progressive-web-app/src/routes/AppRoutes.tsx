@@ -6,6 +6,7 @@ import Layout from "../components/layout/Layout";
 import LoginPage from "../pages/Auth/LoginPage";
 import StoresPage from "../pages/Stores/StoresPage";
 import SKUPage from "../pages/SKU/SKU";
+import Planning from "../pages/Planning/Planning";
 
 const AppRoutes: React.FC = () => {
   const isAuthenticated = useSelector(
@@ -27,6 +28,9 @@ const AppRoutes: React.FC = () => {
           </Route>
           <Route path="/sku" element={<Layout />}>
             <Route index element={<SKUPage />} />
+          </Route>
+          <Route path="/planning" element={<Layout />}>
+            <Route index element={<Planning />} />
           </Route>
           <Route path="*" element={<Navigate to="/stores" replace />} />
         </>
