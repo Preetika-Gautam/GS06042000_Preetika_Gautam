@@ -22,9 +22,7 @@ const initialState: StoreState = {
 export const fetchStoreData = createAsyncThunk(
   "stores/fetchStoreData",
   async () => {
-    const response = await fetch(
-      "../../../src/assets/GSIV25 - Sample Data.xlsx"
-    );
+    const response = await fetch("/GSIV25 - Sample Data.xlsx");
     const arrayBuffer = await response.arrayBuffer();
     const workbook = XLSX.read(arrayBuffer, { type: "array" });
     const sheetName = workbook.SheetNames[0];

@@ -20,7 +20,7 @@ const initialState: SKUState = {
 
 // Async action to load SKU data from the Excel file
 export const fetchSKUData = createAsyncThunk("skus/fetchSKUData", async () => {
-  const response = await fetch("../../../src/assets/GSIV25 - Sample Data.xlsx");
+  const response = await fetch("/GSIV25 - Sample Data.xlsx");
   const arrayBuffer = await response.arrayBuffer();
   const workbook = XLSX.read(arrayBuffer, { type: "array" });
   const sheetName = workbook.SheetNames[1]; // Get SKU sheet
