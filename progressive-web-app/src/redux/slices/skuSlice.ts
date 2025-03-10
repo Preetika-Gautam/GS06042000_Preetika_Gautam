@@ -14,33 +14,19 @@ interface SKUState {
 }
 
 const initialState: SKUState = {
-  data: JSON.parse(localStorage.getItem("skuData") || "[]"),
+  data: [],
   status: "idle",
 };
 
 // Async action to load SKU data from the Excel file
-export const fetchSKUData = createAsyncThunk(
-  "skus/fetchSKUData",
-  async (_, { getState }) => {
-    const currentState = getState() as { skus: SKUState };
-
-    // If data exists in local storage, return it instead of refetching
-    if (currentState.skus.data.length > 0) {
-      return currentState.skus.data;
-    }
-
-    const response = await fetch("../../../public/GSIV25 - Sample Data.xlsx");
-    const arrayBuffer = await response.arrayBuffer();
-    const workbook = XLSX.read(arrayBuffer, { type: "array" });
-
-    const sheetName = workbook.SheetNames[1]; // Get SKU sheet
-    const sheet = workbook.Sheets[sheetName];
-    const skus = XLSX.utils.sheet_to_json<SKU>(sheet);
-
-    localStorage.setItem("skuData", JSON.stringify(skus)); // Store fetched data in local storage
-    return skus;
-  }
-);
+export const fetchSKUData = createAsyncThunk("skus/fetchSKUData", async () => {
+  const response = await fetch("../../../src/assets/GSIV25 - Sample Data.xlsx");
+  const arrayBuffer = await response.arrayBuffer();
+  const workbook = XLSX.read(arrayBuffer, { type: "array" });
+  const sheetName = workbook.SheetNames[1]; // Get SKU sheet
+  const sheet = workbook.Sheets[sheetName];
+  return XLSX.utils.sheet_to_json<SKU>(sheet);
+});
 
 const skuSlice = createSlice({
   name: "skus",
@@ -48,11 +34,9 @@ const skuSlice = createSlice({
   reducers: {
     addNewSKU: (state, action: PayloadAction<SKU>) => {
       state.data.push(action.payload);
-      localStorage.setItem("skuData", JSON.stringify(state.data)); // Update local storage
     },
     deleteSKU: (state, action: PayloadAction<string>) => {
       state.data = state.data.filter((sku) => sku.ID !== action.payload);
-      localStorage.setItem("skuData", JSON.stringify(state.data)); // Persist deletion
     },
   },
   extraReducers: (builder) => {
