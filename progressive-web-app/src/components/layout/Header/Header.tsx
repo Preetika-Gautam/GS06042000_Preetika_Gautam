@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../../redux/slices/authSlice";
 import { RootState } from "../../../redux/store";
 import { useNavigate } from "react-router-dom";
-import logo from "../../../assets/Gsynergy Logo V2 Long Description.svg";
+import InsightsIcon from "@mui/icons-material/Insights";
 import styles from "./Header.module.scss";
 
 const Header: React.FC = () => {
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
   return (
     <div className={styles.headerContainer}>
       <div className={styles.logoContainer}>
-        <img src={logo} alt="logo" />
+        <InsightsIcon fontSize="large" />
       </div>
       <div className={styles.title}>Data Viewer App</div>
       <div>
